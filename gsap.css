@@ -1,0 +1,268 @@
+:root {
+  --text-primary: #032b43;
+}
+
+.text-main {
+  color: #032b43 !important;
+}
+
+body {
+  color: white;
+  font-family: "Kanit", sans-serif;
+  background: #020202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  row-gap: 2rem;
+}
+
+h1 {
+  letter-spacing: 0.35rem;
+  font-weight: bolder !important;
+  font-size: 50px !important;
+}
+
+.message {
+  clip-path: circle(66% at 100% 0);
+  position: absolute;
+  background: #cd170c;
+  aspect-ratio: 1;
+  top: 0;
+  right: 0;
+  width: 55%;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+
+.message .message-content {
+  font-size: 50px;
+  text-wrap: balance;
+  /* max-width: 420px; */
+  color: #fff;
+  padding: 45px 20px 0;
+  text-transform: uppercase;
+  font-family: cursive;
+  text-align: center;
+  letter-spacing: 0.125rem;
+}
+
+.message .message-content .message-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.message .message-content img {
+  filter: invert(1);
+  display: block;
+}
+
+#nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#nav button {
+  outline: transparent;
+  border: none;
+  background: #032b43;
+  color: #fff;
+  padding: 2.5px 5px;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  flex: 1 0 100px;
+  letter-spacing: 0.07rem;
+  max-width: 100px;
+}
+
+.box-container {
+  display: flex;
+  width: 300px;
+  height: 400px;
+  position: relative;
+  z-index: 9999;
+}
+
+.box-container .santa-hidden {
+  max-width: 150px;
+  top: 0;
+  position: absolute;
+  transition: 0.35s;
+}
+
+.box-container:hover .santa-hidden,
+.box-container:has(.boxes.flipped) .santa-hidden {
+  top: -112px;
+}
+
+.box-container .text-hidden {
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: -65px;
+  scale: 0;
+}
+.box-container:has(.boxes.flipped) .text-hidden {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
+}
+
+.boxes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+}
+
+.box {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf7f6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.box img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.box-front {
+  z-index: 1;
+  backface-visibility: hidden;
+  border-left: 3px solid #2660a4;
+}
+
+.box-back {
+  z-index: 0;
+}
+
+.box-front,
+.box-back {
+  transform-origin: left;
+  transition: 1s;
+}
+
+.box-back #text1 {
+  transform: rotateY(180deg);
+}
+/* .box-front #text2 {
+  transform: rotateY(-360deg);
+} */
+
+.flipped .box-front,
+.flipped .box-back {
+  transform: rotateY(-135deg);
+  box-shadow: 0px 16px 17px -8px rgba(0, 0, 0, 0.61);
+  -webkit-box-shadow: 0px 16px 17px -8px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 0px 16px 17px -8px rgba(0, 0, 0, 0.61);
+}
+
+.box .text {
+  width: max-content;
+}
+
+.box #text1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 50px;
+  text-wrap-mode: nowrap;
+  background: #032b43;
+}
+
+.box #text2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 50px;
+  text-wrap-mode: nowrap;
+}
+
+#box-1 {
+  z-index: 3;
+}
+#box-2 {
+  z-index: 2;
+}
+
+footer {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.125rem;
+}
+
+@media (max-width: 1600px) {
+  .message .message-content {
+    font-size: clamp(1rem, -2.4671rem + 5.5921vw, 3.125rem);
+  }
+}
+
+@media (max-width: 1200px) {
+  .message .message-content img {
+    max-width: 75px;
+  }
+}
+
+@media (max-width: 991px) {
+  body {
+    display: block;
+  }
+  .message {
+    clip-path: none;
+    width: 100%;
+    height: 100px;
+    position: static;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .message br {
+    display: none;
+  }
+
+  .message-content .message-images {
+    display: none !important;
+  }
+
+  .message .message-content {
+    padding: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .box-container {
+    margin: 100px auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .message .message-content {
+    font-size: 18px;
+  }
+
+  footer {
+    position: static;
+    text-align: end;
+  }
+}
